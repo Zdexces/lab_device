@@ -50,17 +50,17 @@ class SophisticatedReactor : Device{
     using Device :: addInput;
     using Device :: addOutput;
     virtual void updateOutputs(){
-      // //check overall input mass:
-      // float sum = 0;
-      // for(auto i : inputs){
-      //   sum += i -> getMassFlow();
-      // }
-      // shared_ptr<Stream> out_s1(new Stream(1));
-      // shared_ptr<Stream> out_s2(new Stream(2));
-      // out_s1->setMassFlow(sum / 8);
-      // out_s2->setMassFlow(sum * 7 / 8);
-      // addOutput(out_s1);
-      // addOutput(out_s2);
+      //check overall input mass:
+      float sum = 0;
+      for(auto i : inputs){
+        sum += i -> getMassFlow();
+      }
+      shared_ptr<Stream> out_s1(new Stream(1));
+      shared_ptr<Stream> out_s2(new Stream(2));
+      out_s1->setMassFlow(sum / 8);
+      out_s2->setMassFlow(sum * 7 / 8);
+      addOutput(out_s1);
+      addOutput(out_s2);
     }
     // virtual void printOutputs(std::ostream& os = cout){
     //   for(auto i : outputs){
