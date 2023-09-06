@@ -3,7 +3,7 @@
 #include <vector>
 #include <memory>
 #include <sstream>
-//#include "gtest/gtest.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::vector;
@@ -62,26 +62,26 @@ class SophisticatedReactor : Device{
       addOutput(out_s1);
       addOutput(out_s2);
     }
-    // virtual void printOutputs(std::ostream& os = cout){
-    //   for(auto i : outputs){
-    //     i->print(cout);
-    //   }
-    // }
+    virtual void printOutputs(std::ostream& os = cout){
+      for(auto i : outputs){
+        i->print(cout);
+      }
+    }
 };
 
-// TEST(ReactorTesting, UpdatingOutputs){
-//   SophisticatedReactor test1;
-//   std::stringstream testStream;
-//   test1.printOutputs(testStream);
-//   ASSERT_EQ("Stream s1 flow = 1.875\nStream s2 flow = 13.125\n", testStream.str());
-// }
+TEST(ReactorTesting, UpdatingOutputs){
+  SophisticatedReactor test1;
+  std::stringstream testStream;
+  test1.printOutputs(testStream);
+  ASSERT_EQ("Stream s1 flow = 1.875\nStream s2 flow = 13.125\n", testStream.str());
+}
 
-// TEST(ReactorTesting, PrintingOutputs){
-//   SophisticatedReactor test1;
-//   std::stringstream testStream;
-//   test1.printOutputs(testStream);
-//   ASSERT_EQ("Stream s1 flow = 1.875\nStream s2 flow = 13.125\n", testStream.str());
-// }
+TEST(ReactorTesting, PrintingOutputs){
+  SophisticatedReactor test1;
+  std::stringstream testStream;
+  test1.printOutputs(testStream);
+  ASSERT_EQ("Stream s1 flow = 1.875\nStream s2 flow = 13.125\n", testStream.str());
+}
 
 
 int main(){
@@ -94,9 +94,9 @@ int main(){
   s1->setMassFlow(10.0);
   s2->setMassFlow(5.0);
 
-  // r1.addInput(s1);
-  // r1.addInput(s2);
-  // r1.updateOutputs();
-  // cout << "Output Streams:" << endl;
-  // r1.printOutputs(cout);
+  r1.addInput(s1);
+  r1.addInput(s2);
+  r1.updateOutputs();
+  cout << "Output Streams:" << endl;
+  r1.printOutputs(cout);
 }
